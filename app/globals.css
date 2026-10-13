@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 30 100% 98%; /* cream #FFFBF7 */
+    --foreground: 0 0% 12%; /* charcoal #1F1F1F */
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 12%;
+    --primary: 330 81% 60%; /* rose-500 #EC4899 */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 327 82% 97%; /* pink-50 */
+    --secondary-foreground: 343 76% 33%; /* rose-800 */
+    --muted: 240 5% 96%;
+    --muted-foreground: 215 9% 47%;
+    --accent: 327 82% 97%;
+    --accent-foreground: 343 76% 33%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 330 60% 92%;
+    --input: 330 60% 92%;
+    --ring: 330 81% 60%;
+    --radius: 1rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 4.5rem;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply overflow-x-hidden bg-cream text-charcoal antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Respect users who prefer reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer utilities {
+  /* Hide scrollbars on horizontal scrollers while keeping scrollability */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Momentum scrolling for carousels on iOS */
+  .touch-scroll {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* iOS safe-area helpers */
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  .pt-safe {
+    padding-top: env(safe-area-inset-top);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
